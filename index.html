@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angular Crap</title>
+    <style>
+      .crapper {
+        background-color: red;
+      }
+      .loading {
+        background-color: greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <header ng-controller="header">
+      <h1 ng-cloak>{{name}}</h1>
+      <p>{{age}}</p>
+    </header>
+    <div ng-controller="main">
+      <p>Hi my name is {{name}}!</p>
+      <div ng-controller="myForm">
+        <form>
+          <label for="name">What is your name huh??</label>
+          <input type="text" id="name" ng-model="inputName" />
+        </form>
+        <p>My name is {{filteredName()}}</p>
+        <p
+          ng-class="{'crapper': filteredName().length > 6}"
+          ng-show="filteredName().length > 6"
+        >
+          This is a funny test
+        </p>
+        <ul>
+          <li ng-repeat="crud in cruds">{{crud}}</li>
+        </ul>
+        <button ng-click="theClick()">crapperer</button>
+      </div>
+    </div>
+    <div ng-controller="starwars">
+      <p class="loading" ng-if="loading">Loading!!!!!!!</p>
+      <div ng-if="!loading">
+        <h2>Planets!</h2>
+        <ul>
+          <li ng-repeat="planet in planets">{{planet.name}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="/node_modules/angular/angular.js"></script>
+    <script src="https://code.angularjs.org/1.8.0/angular-messages.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
